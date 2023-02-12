@@ -43,7 +43,7 @@ export const schema = {
       type: "string",
     },
   },
-  required: ["items", "pagination", "synchronizationType"],
+  required: ["items"],
 };
 
 export default async function request() {
@@ -58,9 +58,7 @@ export default async function request() {
       ""
     )
   );
-  // console.log(base64);
-  // const token = toUint8Array();
-  // console.log(token);
+
   // call the toggl api to get the time entry
   const timeEntry = await fetch(
     "https://api.track.toggl.com/api/v9/me/time_entries",
@@ -79,32 +77,22 @@ export default async function request() {
     .then((resp) => resp.json())
     .then((json) => {
       console.log(json);
+      return json;
     })
     .catch((err) => console.error(err));
 
-  return new Response(
-    JSON.stringify({
-      items: [
-        {
-          id: "PR_1231",
-          name: "Improve performance",
-        },
-        {
-          id: "PR_1232",
-          name: "Fix bugs",
-        },
-      ],
-      pagination: {
-        hasNext: false,
-      },
-      synchronizationType: "full",
-    }),
-    {
-      headers: {
-        "content-type": "application/json; charset=UTF-8",
-      },
-    }
-  );
+  const finalRes = JSON.stringify({
+    items: timeEntry.map((entry: any) => ({
+      ...entry,
+      id: entry.id.toString(),
+    })),
+  });
+  console.log(finalRes);
+  return new Response(finalRes, {
+    headers: {
+      "content-type": "application/json; charset=UTF-8",
+    },
+  });
 }
 //
 // Compare this snippet from routes/synchronizer/validate.ts:
