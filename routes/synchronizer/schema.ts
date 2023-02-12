@@ -139,7 +139,7 @@ const timeEntrySchema = {
   },
   billable: {
     description: "Whether the time entry is marked as billable",
-    type: "bool",
+    type: "boolean",
     name: "Billable",
   },
   description: {
@@ -158,7 +158,7 @@ const timeEntrySchema = {
   duronly: {
     description:
       "Used to create a TE with a duration but without a stop time, this field is deprecated for GET endpoints where the value will always be true.",
-    type: "bool",
+    type: "boolean",
     name: "Duration Only",
   },
   id: {
@@ -186,13 +186,13 @@ const timeEntrySchema = {
   },
   start: {
     description: "Start time in UTC",
-    type: "datebox",
+    type: "date",
     name: "Start Time(UTC)",
   },
   stop: {
     description:
       'Stop time in UTC, can be null if it\'s still running or created with "duration" and "duronly" fields',
-    type: "datebox",
+    type: "date",
     name: "Stop time(UTC)",
   },
   // tag_ids: {
