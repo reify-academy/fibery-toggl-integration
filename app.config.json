@@ -5,10 +5,18 @@
   "description": "Integrate data from Toggl time tracker into Fibery",
   "authentication": [
     {
-      "id": "public",
-      "name": "Public Access",
-      "description": "There is no any authentication required",
-      "fields": []
+      "description": "Please provide Toggl authentication",
+      "name": "Token",
+      "id": "key",
+      "fields": [
+        {
+          "type": "link",
+          "value": "https://support.toggl.com/en/articles/3116844-where-is-my-api-key-located",
+          "description": "We need to have your Toggl Api Token to synchronize the data.",
+          "id": "key-link",
+          "name": "Read how to create token here"
+        }
+      ]
     }
   ],
   "sources": [],

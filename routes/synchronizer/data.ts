@@ -46,9 +46,9 @@ export const schema = {
   required: ["items"],
 };
 
-export default async function request() {
-  const username = "maxim@reify.academy";
-  const password = Deno.env.get("TOGGL_USER_PASS")!;
+export default async function request(req: Request) {
+  const username = "581e23942e4e751a36db0e73e4d44e53";
+  const password = "api_token";
 
   const encoder = new TextEncoder();
   const data = encoder.encode(`${username}:${password}`);
@@ -58,6 +58,7 @@ export default async function request() {
       ""
     )
   );
+  // const token = "581e23942e4e751a36db0e73e4d44e53:api_token";
 
   // call the toggl api to get the time entry
   const timeEntry = await fetch(
