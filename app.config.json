@@ -5,16 +5,22 @@
   "description": "Integrate data from Toggl time tracker into Fibery",
   "authentication": [
     {
-      "description": "Please provide Toggl authentication",
+      "description": "Please provide notion authentication",
       "name": "Token",
       "id": "key",
       "fields": [
         {
+          "type": "password",
+          "name": "Integration Token",
+          "description": "Provide Toggl API Integration Token",
+          "id": "key"
+        },
+        {
           "type": "link",
-          "value": "https://support.toggl.com/en/articles/3116844-where-is-my-api-key-located",
-          "description": "We need to have your Toggl Api Token to synchronize the data.",
+          "value": "https://www.notion.so/help/create-integrations-with-the-notion-api",
+          "description": "We need to have your Notion Integration Token to synchronize the data.",
           "id": "key-link",
-          "name": "Read how to create token here"
+          "name": "Read how to create integration, grant access and create token here..."
         }
       ]
     }
