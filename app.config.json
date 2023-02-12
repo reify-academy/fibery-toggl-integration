@@ -1,0 +1,20 @@
+{
+  "id": "toggl-app",
+  "name": "Toggl",
+  "version": "0.0.1",
+  "description": "Integrate data from Toggl time tracker into Fibery",
+  "authentication": [
+    {
+      "id": "public",
+      "name": "Public Access",
+      "description": "There is no any authentication required",
+      "fields": [
+      ]
+    }
+  ],
+  "sources": [
+  ],
+  "responsibleFor": {
+    "dataSynchronization": true
+  }
+}

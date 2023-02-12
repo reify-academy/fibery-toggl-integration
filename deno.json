@@ -1,1 +1,6 @@
-{}
+{
+  "tasks": {
+    "start": "deno run ./mod.ts",
+    "test": "deno test"
+  }
+}
