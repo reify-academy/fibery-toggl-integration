@@ -60,10 +60,7 @@ export default function request() {
         },
       ],
       pagination: {
-        hasNext: true,
-        nextPageConfig: {
-          repositories: ["fibery/apps-gallery"],
-        },
+        hasNext: false,
       },
       synchronizationType: "full",
     }),
