@@ -1,6 +1,7 @@
-import { Handler } from "./dev_deps.ts";
+import { assert, assertArrayIncludes, Handler } from "./dev_deps.ts";
+import validate from "./validator.ts";
 
-export const testRoute = (routes: Handler, path: string) => {
+export const testRoute = async (routes: Handler, path: string) => {
   const options = {
     localAddr: { hostname: "localhost", port: 8080, transport: "tcp" as const },
     remoteAddr: {
@@ -9,5 +10,23 @@ export const testRoute = (routes: Handler, path: string) => {
       transport: "tcp" as const,
     },
   };
-  return routes(new Request("http://localhost:8080" + path), options);
+  const res = await routes(
+    new Request("http://localhost:8080" + path),
+    options
+  );
+  assertArrayIncludes([200, 201, 204], [res.status]);
+  return res;
 };
+
+export async function validateSchema(
+  res: Response,
+  schema: Record<string, unknown>
+) {
+  try {
+    const json = await res.json();
+    validate(schema, json);
+  } catch (e) {
+    console.log(e);
+    assert(false, "Schema validation failed");
+  }
+}
