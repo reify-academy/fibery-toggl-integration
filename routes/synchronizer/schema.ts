@@ -139,7 +139,8 @@ const timeEntrySchema = {
   },
   billable: {
     description: "Whether the time entry is marked as billable",
-    type: "boolean",
+    type: "text",
+    subType: "boolean",
     name: "Billable",
   },
   description: {
@@ -158,7 +159,8 @@ const timeEntrySchema = {
   duronly: {
     description:
       "Used to create a TE with a duration but without a stop time, this field is deprecated for GET endpoints where the value will always be true.",
-    type: "boolean",
+    type: "text",
+    subType: "boolean",
     name: "Duration Only",
   },
   id: {
