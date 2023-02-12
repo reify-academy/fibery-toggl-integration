@@ -46,7 +46,42 @@ export const schema = {
   required: ["items", "pagination", "synchronizationType"],
 };
 
-export default function request() {
+export default async function request() {
+  const username = "maxim@reify.academy";
+  const password = Deno.env.get("TOGGL_USER_PASS")!;
+
+  const encoder = new TextEncoder();
+  const data = encoder.encode(`${username}:${password}`);
+  const token = btoa(
+    new Uint8Array(data).reduce(
+      (data, byte) => data + String.fromCharCode(byte),
+      ""
+    )
+  );
+  // console.log(base64);
+  // const token = toUint8Array();
+  // console.log(token);
+  // call the toggl api to get the time entry
+  const timeEntry = await fetch(
+    "https://api.track.toggl.com/api/v9/me/time_entries",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Basic ${token}`,
+      },
+    }
+  )
+    .then((resp) => {
+      console.log("STATUS", resp.status);
+      return resp;
+    })
+    .then((resp) => resp.json())
+    .then((json) => {
+      console.log(json);
+    })
+    .catch((err) => console.error(err));
+
   return new Response(
     JSON.stringify({
       items: [
