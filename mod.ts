@@ -1,7 +1,8 @@
 import { router, serve } from "./deps.ts";
+import indexRoute from "./routes/index.ts";
 
 export const routes = router({
-  "/": () => new Response("hello world!"),
+  "/": indexRoute,
 });
 // if running via deno run serve automatically
 // if running via deno test don't serve
