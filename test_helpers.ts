@@ -1,7 +1,11 @@
 import { assert, assertArrayIncludes, Handler } from "./dev_deps.ts";
 import validate from "./validator.ts";
 
-export const testRoute = async (routes: Handler, path: string) => {
+export const testRoute = async (
+  routes: Handler,
+  path: string,
+  body?: BodyInit
+) => {
   const options = {
     localAddr: { hostname: "localhost", port: 8080, transport: "tcp" as const },
     remoteAddr: {
@@ -11,7 +15,10 @@ export const testRoute = async (routes: Handler, path: string) => {
     },
   };
   const res = await routes(
-    new Request("http://localhost:8080" + path),
+    new Request("http://localhost:8080" + path, {
+      body,
+      method: body ? "POST" : "GET",
+    }),
     options
   );
   assertArrayIncludes([200, 201, 204], [res.status]);

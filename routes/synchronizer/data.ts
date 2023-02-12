@@ -47,7 +47,8 @@ export const schema = {
 };
 
 export default async function request(req: Request) {
-  const username = "581e23942e4e751a36db0e73e4d44e53";
+  const incomingData = await req.json();
+  const username = incomingData.account.key;
   const password = "api_token";
 
   const encoder = new TextEncoder();
@@ -58,7 +59,6 @@ export default async function request(req: Request) {
       ""
     )
   );
-  // const token = "581e23942e4e751a36db0e73e4d44e53:api_token";
 
   // call the toggl api to get the time entry
   const timeEntry = await fetch(
