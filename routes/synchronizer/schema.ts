@@ -167,6 +167,11 @@ const timeEntrySchema = {
     type: "ID",
     name: "Id",
   },
+  name: {
+    description: "Time Entry name",
+    type: "text",
+    name: "Name",
+  },
   // project_id: {
   //   description:
   //     "Project ID. Can be null if project was not provided or project was later deleted",
@@ -201,13 +206,13 @@ const timeEntrySchema = {
   //     "Tag names, null if tags were not provided or were later deleted",
   //   type: ["string"],
   // },
-  task_id: {
-    description:
-      "Task ID. Can be null if task was not provided or project was later deleted",
-    type: "Id",
-    nullable: true,
-    name: "ID",
-  },
+  // task_id: {
+  //   description:
+  //     "Task ID. Can be null if task was not provided or project was later deleted",
+  //   type: "Id",
+  //   nullable: true,
+  //   name: "ID",
+  // },
   // user_id: {
   //   description: "Time Entry creator ID",
   // },
