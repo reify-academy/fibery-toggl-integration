@@ -180,19 +180,19 @@ const timeEntrySchema = {
   // },
   server_deleted_at: {
     description: "When was deleted, null if not deleted",
-    type: "string",
+    type: "date",
     nullable: true,
     name: "Deleted At",
   },
   start: {
     description: "Start time in UTC",
-    type: "string",
+    type: "datebox",
     name: "Start Time(UTC)",
   },
   stop: {
     description:
       'Stop time in UTC, can be null if it\'s still running or created with "duration" and "duronly" fields',
-    type: "string",
+    type: "datebox",
     name: "Stop time(UTC)",
   },
   // tag_ids: {
