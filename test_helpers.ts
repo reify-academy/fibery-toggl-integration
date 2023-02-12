@@ -12,7 +12,7 @@ export const testRoute = async (routes: Handler, path: string) => {
   };
   const res = await routes(
     new Request("http://localhost:8080" + path),
-    options
+    options,
   );
   assertArrayIncludes([200, 201, 204], [res.status]);
   return res;
@@ -20,7 +20,7 @@ export const testRoute = async (routes: Handler, path: string) => {
 
 export async function validateSchema(
   res: Response,
-  schema: Record<string, unknown>
+  schema: Record<string, unknown>,
 ) {
   try {
     const json = await res.json();

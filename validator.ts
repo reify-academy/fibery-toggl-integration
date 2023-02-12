@@ -3,7 +3,7 @@ const ajv = new Ajv.default();
 
 export default function validate(
   schema: Record<string, unknown>,
-  data: Record<string, unknown>
+  data: Record<string, unknown>,
 ) {
   const validator = ajv.compile(schema);
   const valid = validator(data);

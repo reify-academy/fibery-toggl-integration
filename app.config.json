@@ -8,12 +8,10 @@
       "id": "public",
       "name": "Public Access",
       "description": "There is no any authentication required",
-      "fields": [
-      ]
+      "fields": []
     }
   ],
-  "sources": [
-  ],
+  "sources": [],
   "responsibleFor": {
     "dataSynchronization": true
   }

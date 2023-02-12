@@ -3,7 +3,6 @@ export const schema = {
   type: "object",
   properties: {
     name: { type: "string" },
-    website: { type: "string" },
     version: { type: "string" },
     description: { type: "string" },
     authentication: {
@@ -27,6 +26,14 @@ export const schema = {
       },
     },
   },
+  required: [
+    "name",
+    "version",
+    "description",
+    "authentication",
+    "sources",
+    "responsibleFor",
+  ],
 };
 export default function request() {
   return new Response(JSON.stringify(appConfig), {
