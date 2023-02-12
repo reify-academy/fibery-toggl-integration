@@ -85,6 +85,7 @@ export default async function request() {
     items: timeEntry.map((entry: any) => ({
       ...entry,
       id: entry.id.toString(),
+      name: entry.description,
     })),
   });
   console.log(finalRes);
