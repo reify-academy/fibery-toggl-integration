@@ -135,37 +135,37 @@ export const schema = {
 const timeEntrySchema = {
   at: {
     description: "When was last updated",
-    type: "string",
+    type: "text",
     name: "Last Updated",
   },
   billable: {
     description: "Whether the time entry is marked as billable",
-    type: "boolean",
+    type: "bool",
     name: "Billable",
   },
   description: {
     description:
       "Time Entry description, null if not provided at creation/update",
-    type: "string",
+    type: "text",
     nullable: true,
     name: "Description",
   },
   duration: {
     description:
       "Time entry duration. For running entries should be -1 * (Unix start time)",
-    type: "integer",
+    type: "number",
     name: "Duration",
   },
   duronly: {
     description:
       "Used to create a TE with a duration but without a stop time, this field is deprecated for GET endpoints where the value will always be true.",
-    type: "boolean",
+    type: "bool",
     name: "Duration Only",
   },
   id: {
     description: "Time Entry ID",
-    type: "integer",
-    name: "ID",
+    type: "ID",
+    name: "Id",
   },
   // project_id: {
   //   description:
