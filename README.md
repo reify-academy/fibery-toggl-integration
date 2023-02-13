@@ -18,7 +18,7 @@ asdf install
 
 #### Hosted version
 
-Hosted version is available at url https://toggl.reify.academy
+Hosted version is available at url fibery-toggl-integration.deno.dev
 
 #### Self-hosted version
 
