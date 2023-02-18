@@ -1,8 +1,6 @@
 {
   "tasks": {
-    "start": "deno run -A ./mod.ts",
-    "dev": "deno run -A --watch ./mod.ts",
+    "start": "deno run ./mod.ts",
     "test": "deno test"
-  },
-  "importMap": "./import_map.json"
+  }
 }
