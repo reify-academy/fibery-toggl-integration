@@ -224,7 +224,7 @@ const timeEntrySchema = {
 const workspaceEntrySchema = {
   id: {
     description: "Workspace ID",
-    type: "number",
+    type: "ID",
     name: "Id",
   },
   name: {
@@ -295,7 +295,7 @@ const workspaceEntrySchema = {
 const clientEntrySchema = {
   id: {
     description: "Client ID",
-    type: "number",
+    type: "ID",
     name: "Id",
   },
   wid: {
@@ -324,8 +324,8 @@ const clientEntrySchema = {
 export const projectEntrySchema = {
   id: {
     description: "Project ID",
-    type: "number",
-    name: "Project ID",
+    type: "ID",
+    name: "Id",
   },
   name: {
     description: "Project name",
