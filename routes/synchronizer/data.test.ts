@@ -13,7 +13,7 @@ Deno.test("can validate /api/v1/synchronizer/data route", async () => {
       account: {
         key: config.TOGGL_API_TOKEN,
       },
-    })
+    }),
   );
   validateSchema(res, schema);
 });

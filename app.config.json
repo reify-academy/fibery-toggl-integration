@@ -1,11 +1,11 @@
 {
   "id": "toggl-app",
   "name": "Toggl",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Integrate data from Toggl time tracker into Fibery",
   "authentication": [
     {
-      "description": "Please provide notion authentication",
+      "description": "Please provide toggl authentication",
       "name": "Token",
       "id": "key",
       "fields": [
@@ -17,16 +17,23 @@
         },
         {
           "type": "link",
-          "value": "https://www.notion.so/help/create-integrations-with-the-notion-api",
-          "description": "We need to have your Notion Integration Token to synchronize the data.",
+          "value": "https://www.toggl.so/help/create-integrations-with-the-toggl-api",
+          "description": "We need to have your toggl Integration Token to synchronize the data.",
           "id": "key-link",
           "name": "Read how to create integration, grant access and create token here..."
         }
       ]
     }
   ],
-  "sources": [],
   "responsibleFor": {
-    "dataSynchronization": true
-  }
+    "dataSynchronization": true,
+    "automations": true
+  },
+  "actions": {
+    "action": "test-action-from-toggl",
+    "name": "Test Action from Toggl",
+    "description": "Test action from toggl integration",
+    "args": []
+  },
+  "sources": []
 }

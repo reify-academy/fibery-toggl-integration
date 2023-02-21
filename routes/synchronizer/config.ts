@@ -50,10 +50,16 @@ export default function request() {
       types: [{ id: "time_entry", name: "Time Entry" }],
       filters: [
         {
-          id: "modifiedAfter",
-          title: "Modified After",
-          optional: true,
+          id: "start_date",
           type: "datebox",
+          title: "From Date",
+          optional: true,
+        },
+        {
+          id: "end_date",
+          type: "datebox",
+          title: "To Date",
+          optional: true,
         },
       ],
     }),

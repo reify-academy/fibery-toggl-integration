@@ -13,7 +13,7 @@
       "type": "text",
       "name": "Original URL",
       "subType": "url"
-    } 
+    }
   }
 }
 */
@@ -129,7 +129,7 @@ export const schema = {
             "description": "Workspace ID",
             "type": "integer"
         }
-    } 
+    }
 */
 const timeEntrySchema = {
   at: {
@@ -228,6 +228,6 @@ export default function request() {
       headers: {
         "content-type": "application/json; charset=UTF-8",
       },
-    }
+    },
   );
 }
