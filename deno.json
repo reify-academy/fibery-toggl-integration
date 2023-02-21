@@ -2,5 +2,6 @@
   "tasks": {
     "start": "deno run ./mod.ts",
     "test": "deno test"
-  }
+  },
+  "importMap": "./import_map.json"
 }
