@@ -1,4 +1,4 @@
 {
   "deno.enable": true,
-  "window.title": "${activeEditorShort}${separator}${rootName}${separator}${profileName} ${separator} [Branch: dev]"
+  "window.title": "${activeEditorShort}${separator}${rootName}${separator}${profileName} ${separator} [Branch: actions]"
 }
