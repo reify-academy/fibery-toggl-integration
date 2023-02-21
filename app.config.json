@@ -1,7 +1,7 @@
 {
   "id": "toggl-app",
   "name": "Toggl",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Integrate data from Toggl time tracker into Fibery",
   "authentication": [
     {
