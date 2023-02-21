@@ -325,7 +325,7 @@ export const projectEntrySchema = {
   id: {
     description: "Project ID",
     type: "number",
-    name: "Id",
+    name: "Project ID",
   },
   name: {
     description: "Project name",
