@@ -29,11 +29,13 @@
     "dataSynchronization": true,
     "automations": true
   },
-  "actions": {
-    "action": "test-action-from-toggl",
-    "name": "Test Action from Toggl",
-    "description": "Test action from toggl integration",
-    "args": []
-  },
+  "actions": [
+    {
+      "action": "test-action-from-toggl",
+      "name": "Test Action from Toggl",
+      "description": "Test action from toggl integration",
+      "args": []
+    }
+  ],
   "sources": []
 }
