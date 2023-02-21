@@ -5,10 +5,10 @@
   },
   "forwardPorts": [
     8000
-],
-"portsAttributes": {
-	"8000": {
-		"label": "Deno server"
-	}
-}
+  ],
+  "portsAttributes": {
+    "8000": {
+      "label": "Deno server"
+    }
+  }
 }
