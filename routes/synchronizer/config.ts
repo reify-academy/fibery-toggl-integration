@@ -47,7 +47,12 @@ export const schema = {
 export default function request() {
   return new Response(
     JSON.stringify({
-      types: [{ id: "time_entry", name: "Time Entry" }],
+      types: [
+        { id: "time_entry", name: "Time Entry" },
+        { id: "project", name: "Project" },
+        { id: "client", name: "Client" },
+        { id: "workspace", name: "Workspace" },
+      ],
       filters: [
         {
           id: "start_date",
@@ -67,6 +72,6 @@ export default function request() {
       headers: {
         "content-type": "application/json; charset=UTF-8",
       },
-    },
+    }
   );
 }

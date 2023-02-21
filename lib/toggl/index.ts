@@ -19,22 +19,63 @@ interface TogglTimeEntry {
   wid: number;
 }
 
-export function getTimeEnties(
+export function fetchTimeEnties(
   key: string,
   start_date: string,
-  end_date: string,
+  end_date: string
 ): Promise<TogglTimeEntry[]> {
   const token = createAuthToken(key);
   const url = `https://api.track.toggl.com/api/v9/me/time_entries?start_date=${
     start_date ?? "2023-01-01"
   }&end_date=${end_date ?? "2023-12-12"}`;
-  return fetch(url, {
+  const response = fetch(url, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Basic ${token}`,
     },
-  })
+  });
+  return handleResponse(response);
+}
+
+export function fetchWorkspaces(key: string) {
+  const token = createAuthToken(key);
+  const res = fetch("https://api.track.toggl.com/api/v9/me/workspaces", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Basic ${token}`,
+    },
+  });
+  return handleResponse(res);
+}
+
+export function fetchClients(key: string) {
+  const token = createAuthToken(key);
+  const res = fetch("https://api.track.toggl.com/api/v9/me/clients", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Basic ${token}`,
+    },
+  });
+  return handleResponse(res);
+}
+
+export function fetchProjects(key: string) {
+  const token = createAuthToken(key);
+  const res = fetch("https://api.track.toggl.com/api/v9/me/projects", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Basic ${token}`,
+    },
+  });
+  return handleResponse(res);
+}
+
+function handleResponse(response: Promise<Response>) {
+  return response
     .then((resp) => {
       if ([200, 201, 204].includes(resp.status)) {
         return resp;
@@ -51,7 +92,6 @@ export function getTimeEnties(
       throw new Error("Error in fetching time entries");
     });
 }
-
 function createAuthToken(username: string) {
   const password = "api_token";
 
@@ -60,27 +100,8 @@ function createAuthToken(username: string) {
   const token = btoa(
     new Uint8Array(data).reduce(
       (data, byte) => data + String.fromCharCode(byte),
-      "",
-    ),
+      ""
+    )
   );
   return token;
-}
-
-export async function fetchWorkspaces(key: string) {
-  const token = createAuthToken(key);
-  return await fetch("https://api.track.toggl.com/api/v9/workspaces", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Basic ${token}`,
-    },
-  })
-    .then((resp) => {
-      return resp;
-    })
-    .then((resp) => resp.json())
-    .then((json) => {
-      return json;
-    })
-    .catch((err) => console.error(err));
 }
