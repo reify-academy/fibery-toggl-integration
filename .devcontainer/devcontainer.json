@@ -2,5 +2,13 @@
   "image": "mcr.microsoft.com/devcontainers/universal:2",
   "features": {
     "ghcr.io/devcontainers-contrib/features/deno-asdf:2": {}
-  }
+  },
+  "forwardPorts": [
+    8000
+],
+"portsAttributes": {
+	"8000": {
+		"label": "Deno server"
+	}
+}
 }
