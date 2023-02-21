@@ -1,3 +1,4 @@
+import { getTimeEnties } from "/lib/toggl/index.ts";
 /* Example
 {
     "items": [
@@ -46,44 +47,21 @@ export const schema = {
   required: ["items"],
 };
 
+export const internals = {
+  getTimeEnties,
+};
+
 export default async function request(req: Request) {
   const incomingData = await req.json();
-  const username = incomingData.account.key;
-  const password = "api_token";
-
-  const encoder = new TextEncoder();
-  const data = encoder.encode(`${username}:${password}`);
-  const token = btoa(
-    new Uint8Array(data).reduce(
-      (data, byte) => data + String.fromCharCode(byte),
-      ""
-    )
-  );
+  const { key } = incomingData.account;
+  const { filters } = incomingData;
+  const { start_date, end_date } = filters ?? {};
 
   // call the toggl api to get the time entry
-  const timeEntry = await fetch(
-    "https://api.track.toggl.com/api/v9/me/time_entries",
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Basic ${token}`,
-      },
-    }
-  )
-    .then((resp) => {
-      console.log("STATUS", resp.status);
-      return resp;
-    })
-    .then((resp) => resp.json())
-    .then((json) => {
-      console.log(json);
-      return json;
-    })
-    .catch((err) => console.error(err));
+  const timeEntries = await getTimeEnties(key, start_date, end_date);
 
   const finalRes = JSON.stringify({
-    items: timeEntry.map((entry: any) => ({
+    items: timeEntries.map((entry) => ({
       ...entry,
       id: entry.id.toString(),
       name: entry.description,
@@ -96,6 +74,7 @@ export default async function request(req: Request) {
     },
   });
 }
+
 //
 // Compare this snippet from routes/synchronizer/validate.ts:
 // /* Example
