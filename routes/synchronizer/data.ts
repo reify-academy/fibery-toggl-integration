@@ -1,4 +1,9 @@
-import { getTimeEnties } from "/lib/toggl/index.ts";
+import {
+  fetchClients,
+  fetchProjects,
+  fetchTimeEnties,
+  fetchWorkspaces,
+} from "/lib/toggl/index.ts";
 /* Example
 {
     "items": [
@@ -48,7 +53,7 @@ export const schema = {
 };
 
 export const internals = {
-  getTimeEnties,
+  fetchTimeEnties,
 };
 
 export default async function request(req: Request) {
@@ -56,9 +61,60 @@ export default async function request(req: Request) {
   const { key } = incomingData.account;
   const { filters } = incomingData;
   const { start_date, end_date } = filters ?? {};
+  switch (incomingData.requestedType) {
+    case "time_entry":
+      // call the toggl api to get the time entry
+      return await getTimeEntries(key, start_date, end_date);
+    case "workspace":
+      return await getWorkspaces(key);
+    case "client":
+      return await getClients(key);
+    case "project":
+      return await getProjects(key);
+    default:
+      return new Response(
+        `Invalid type requested ${incomingData.requestedType}`,
+        {
+          status: 404,
+        }
+      );
+  }
+}
 
-  // call the toggl api to get the time entry
-  const timeEntries = await getTimeEnties(key, start_date, end_date);
+async function getClients(key: string) {
+  const clients = await fetchClients(key);
+
+  const finalRes = JSON.stringify({
+    items: clients,
+  });
+  return new Response(finalRes, {
+    headers: {
+      "content-type": "application/json; charset=UTF-8",
+    },
+  });
+}
+async function getWorkspaces(key: string) {
+  const workspaces = await fetchWorkspaces(key);
+
+  const finalRes = JSON.stringify({
+    items: workspaces.map((workspace: { id: number }) => ({
+      ...workspace,
+      id: workspace.id.toString(),
+    })),
+  });
+  return new Response(finalRes, {
+    headers: {
+      "content-type": "application/json; charset=UTF-8",
+    },
+  });
+}
+
+async function getTimeEntries(
+  key: string,
+  start_date: string,
+  end_date: string
+) {
+  const timeEntries = await fetchTimeEnties(key, start_date, end_date);
 
   const finalRes = JSON.stringify({
     items: timeEntries.map((entry) => ({
@@ -67,7 +123,7 @@ export default async function request(req: Request) {
       name: entry.description,
     })),
   });
-  console.log(finalRes);
+
   return new Response(finalRes, {
     headers: {
       "content-type": "application/json; charset=UTF-8",
@@ -75,11 +131,14 @@ export default async function request(req: Request) {
   });
 }
 
-//
-// Compare this snippet from routes/synchronizer/validate.ts:
-// /* Example
-// {
-//     "repository": {
-//         "id": "fibery/apps-gallery",
-//         "name": "Fibery Apps Gallery",
-//         "url": "
+async function getProjects(key: string) {
+  const projects = await fetchProjects(key);
+  const finalRes = JSON.stringify({
+    items: projects,
+  });
+  return new Response(finalRes, {
+    headers: {
+      "content-type": "application/json; charset=UTF-8",
+    },
+  });
+}
