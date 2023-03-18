@@ -1,7 +1,7 @@
-import { routes } from "../../mod.ts";
+import { routes } from "/mod.ts";
 import { testRoute, validateSchema } from "../../test_helpers.ts";
-import { schema } from "./data.ts";
-import { load } from "../../dev_deps.ts";
+import { schema } from "/routes/synchronizer/data.ts";
+import { load } from "/dev_deps.ts";
 
 Deno.test("can validate /api/v1/synchronizer/data route", async () => {
   const config = await load();
