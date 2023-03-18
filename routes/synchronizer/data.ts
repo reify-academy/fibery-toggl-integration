@@ -120,7 +120,7 @@ async function getTimeEntries(
     items: timeEntries.map((entry) => ({
       ...entry,
       id: entry.id.toString(),
-      name: entry.description,
+      name: entry.description || "Untitled",
     })),
   });
 
