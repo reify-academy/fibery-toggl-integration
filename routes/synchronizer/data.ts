@@ -100,6 +100,7 @@ async function getWorkspaces(key: string) {
     items: workspaces.map((workspace: { id: number }) => ({
       ...workspace,
       id: workspace.id.toString(),
+      workspaceId: workspace.id.toString(),
     })),
   });
   return new Response(finalRes, {

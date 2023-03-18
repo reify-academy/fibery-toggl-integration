@@ -30,7 +30,9 @@ Deno.test("startTimer", async () => {
   assert(result.id > 0);
 
   // Finally, stop the timer
-  await stopCurrentTimer(config.TOGGL_API_TOKEN, config.TOGGL_WORKSPACE_ID);
+  await stopCurrentTimer(config.TOGGL_API_TOKEN, {
+    workspaceId: config.TOGGL_WORKSPACE_ID,
+  });
 });
 
 Deno.test("stopCurrentTimer", async () => {
@@ -44,13 +46,23 @@ Deno.test("stopCurrentTimer", async () => {
   });
 
   // Then, stop the current timer
-  const res = await stopCurrentTimer(
-    config.TOGGL_API_TOKEN,
-    config.TOGGL_WORKSPACE_ID
-  );
+  const res = await stopCurrentTimer(config.TOGGL_API_TOKEN, {
+    workspaceId: config.TOGGL_WORKSPACE_ID,
+  });
 
   // Finally, check that the timer is stopped
-  assert(new Date(res.stop) < new Date());
+  assert(new Date(res!.stop) < new Date());
+});
+
+Deno.test("stopCurrentTimer - no current timer", async () => {
+  const config = await load();
+
+  // try to stop a timer when there is no current timer
+  const res = await stopCurrentTimer(config.TOGGL_API_TOKEN, {
+    workspaceId: config.TOGGL_WORKSPACE_ID,
+  });
+
+  assertEquals(res, null);
 });
 
 Deno.test("getCurrentTimer", async () => {
@@ -70,5 +82,7 @@ Deno.test("getCurrentTimer", async () => {
   assertEquals(currentTimer.description, description);
 
   // Finally, stop the timer
-  await stopCurrentTimer(config.TOGGL_API_TOKEN, config.TOGGL_WORKSPACE_ID);
+  await stopCurrentTimer(config.TOGGL_API_TOKEN, {
+    workspaceId: config.TOGGL_WORKSPACE_ID,
+  });
 });

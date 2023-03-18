@@ -71,7 +71,8 @@ Deno.test("it returns error to user when action is not supported", async () => {
           description: "test description",
         },
       },
-    })
+    }),
+    400
   ).then((res) => validateSchema(res, schema));
 
   assert(res.message, "Invalid action requested not-supported-action");
@@ -97,7 +98,8 @@ Deno.test("returns errors when fail to start timer", async () => {
           description: "test description",
         },
       },
-    })
+    }),
+    500
   ).then((res) => validateSchema(res, schema));
 
   assert(res.message.includes("Error occured"));

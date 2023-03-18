@@ -150,11 +150,17 @@ export function getCurrentTimer(key: string): Promise<TogglTimeEntry> {
 
 export async function stopCurrentTimer(
   key: string,
-  workspaceId: string
-): Promise<TogglTimeEntry> {
+  { workspaceId }: { workspaceId: string }
+): Promise<TogglTimeEntry | null> {
   const currentTimer = await getCurrentTimer(key);
+  if (!currentTimer) {
+    console.log("No current timer to stop");
+    return Promise.resolve(null);
+  }
+  console.log("Current timer:", currentTimer);
   const token = createAuthToken(key);
   const url = `https://api.track.toggl.com/api/v9/workspaces/${workspaceId}/time_entries/${currentTimer.id}/stop`;
+  console.log("Stopping timer with:", url);
   const res = fetch(url, {
     method: "PATCH",
     headers: {

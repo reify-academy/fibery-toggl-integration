@@ -52,23 +52,33 @@ export default async function request(req: Request) {
           status: 200,
         });
       }
+      case "stop-toggl-timer": {
+        // if there is no timer running, just return success
+        await _internals.stopCurrentTimer(key, args);
+        return new Response(JSON.stringify({}), {
+          status: 200,
+        });
+      }
       default: {
         const response = {
           message: `Invalid action requested ${actionName}`,
         };
         return new Response(JSON.stringify(response), {
-          status: 200,
+          status: 400,
         });
       }
     }
   } catch (e) {
-    console.error("Error occured during trying to start timer", e);
+    console.error(
+      "Error occured during trying to perform an action on timer",
+      e
+    );
     console.error(JSON.stringify(action));
     const response = {
-      message: `Error occured during trying to start timer. Please, contact developers of fibery toggl integration for further assistance.`,
+      message: `Error occured during trying to perform an action on timer. Please, contact developers of fibery toggl integration for further assistance.`,
     };
     return new Response(JSON.stringify(response), {
-      status: 200,
+      status: 500,
     });
   }
 }
