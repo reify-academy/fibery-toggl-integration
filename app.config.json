@@ -1,7 +1,7 @@
 {
   "id": "toggl-app",
   "name": "Toggl",
-  "version": "0.0.3",
+  "version": "0.1.3",
   "description": "Integrate data from Toggl time tracker into Fibery",
   "authentication": [
     {
@@ -29,11 +29,42 @@
     "dataSynchronization": true,
     "automations": true
   },
-  "actions": {
-    "action": "test-action-from-toggl",
-    "name": "Test Action from Toggl",
-    "description": "Test action from toggl integration",
-    "args": []
-  },
+  "actions": [
+    {
+      "action": "start-toggl-timer",
+      "name": "Starts Toggl Timer",
+      "description": "Starts Toggl Timer, this action will stop currently running timer",
+      "args": [
+        {
+          "id": "workspaceId",
+          "name": "Workspace Id",
+          "description": "Workspace Id",
+          "type": "text",
+          "textTemplateSupported": true
+        },
+        {
+          "id": "description",
+          "name": "Description",
+          "description": "Description",
+          "type": "text",
+          "textTemplateSupported": true
+        }
+      ]
+    },
+    {
+      "action": "stop-toggl-timer",
+      "name": "Stops currently running timer",
+      "description": "Stops currently running timer",
+      "args": [
+        {
+          "id": "workspaceId",
+          "name": "Workspace Id",
+          "description": "Workspace Id",
+          "type": "text",
+          "textTemplateSupported": true
+        }
+      ]
+    }
+  ],
   "sources": []
 }

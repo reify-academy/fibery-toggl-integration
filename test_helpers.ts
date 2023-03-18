@@ -4,7 +4,8 @@ import validate from "./validator.ts";
 export const testRoute = async (
   routes: Handler,
   path: string,
-  body?: BodyInit
+  body?: BodyInit,
+  expectStatus?: number
 ) => {
   const options = {
     localAddr: { hostname: "localhost", port: 8080, transport: "tcp" as const },
@@ -21,8 +22,13 @@ export const testRoute = async (
     }),
     options
   );
-  assertArrayIncludes([200, 201, 204], [res.status]);
-  return res;
+  if (expectStatus) {
+    assert(res.status === expectStatus);
+    return res;
+  } else {
+    assertArrayIncludes([200, 201, 204], [res.status]);
+    return res;
+  }
 };
 
 export async function validateSchema(
@@ -35,6 +41,7 @@ export async function validateSchema(
       console.warn("Cheating... no data to validate");
     }
     validate(schema, json);
+    return json;
   } catch (e) {
     console.log(e);
     assert(false, "Schema validation failed");

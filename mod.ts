@@ -4,6 +4,7 @@ import validateRoute from "./routes/validate.ts";
 import synchronizerConfigRoute from "./routes/synchronizer/config.ts";
 import synchronizerSchemaRoute from "./routes/synchronizer/schema.ts";
 import synchronizerDataRoute from "./routes/synchronizer/data.ts";
+import actionExecutorRoute from "./routes/automations/action/execute.ts";
 
 export const routes = router({
   "/": indexRoute,
@@ -11,6 +12,7 @@ export const routes = router({
   "/api/v1/synchronizer/config": synchronizerConfigRoute,
   "/api/v1/synchronizer/schema": synchronizerSchemaRoute,
   "/api/v1/synchronizer/data": synchronizerDataRoute,
+  "/api/v1/automations/action/execute": actionExecutorRoute,
 });
 // if running via deno run serve automatically
 // if running via deno test don't serve

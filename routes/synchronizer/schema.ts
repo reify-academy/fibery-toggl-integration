@@ -223,9 +223,14 @@ const timeEntrySchema = {
 /* example - {"id":7066623,"organization_id":7038805,"name":"Maxim's workspace","profile":102,"premium":true,"business_ws":true,"admin":true,"suspended_at":null,"server_deleted_at":null,"default_hourly_rate":null,"rate_last_updated":null,"default_currency":"USD","only_admins_may_create_projects":false,"only_admins_may_create_tags":false,"only_admins_see_billable_rates":false,"only_admins_see_team_dashboard":false,"projects_billable_by_default":true,"reports_collapse":true,"rounding":1,"rounding_minutes":0,"at":"2023-02-12T06:31:23+00:00","logo_url":"https:\/\/assets.toggl.com\/images\/workspace.jpg","ical_url":"\/ical\/workspace_user\/e6a9782c38943bb010ce33f9b504e8fb","ical_enabled":true,"csv_upload":null,"subscription":null,"te_constraints":{}} */
 const workspaceEntrySchema = {
   id: {
-    description: "Workspace ID",
+    description: "Id",
     type: "ID",
     name: "Id",
+  },
+  workspaceId: {
+    description: "Workspace ID",
+    type: "text",
+    name: "Workspace Id",
   },
   name: {
     description: "Workspace name",
