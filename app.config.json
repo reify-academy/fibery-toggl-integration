@@ -31,9 +31,9 @@
   },
   "actions": [
     {
-      "action": "start-toggle-timer",
-      "name": "Start Toggl Timer",
-      "description": "Test action from toggl integration",
+      "action": "start-toggl-timer",
+      "name": "Starts Toggl Timer",
+      "description": "Starts Toggl Timer, this action will stop currently running timer",
       "args": [
         {
           "id": "workspaceId",
@@ -46,6 +46,20 @@
           "id": "description",
           "name": "Description",
           "description": "Description",
+          "type": "text",
+          "textTemplateSupported": true
+        }
+      ]
+    },
+    {
+      "action": "stop-toggl-timer",
+      "name": "Stops currently running timer",
+      "description": "Stops currently running timer",
+      "args": [
+        {
+          "id": "workspaceId",
+          "name": "Workspace Id",
+          "description": "Workspace Id",
           "type": "text",
           "textTemplateSupported": true
         }

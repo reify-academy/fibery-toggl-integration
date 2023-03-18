@@ -35,6 +35,7 @@ export async function validateSchema(
       console.warn("Cheating... no data to validate");
     }
     validate(schema, json);
+    return json;
   } catch (e) {
     console.log(e);
     assert(false, "Schema validation failed");
