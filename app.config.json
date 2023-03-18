@@ -1,7 +1,7 @@
 {
   "id": "toggl-app",
   "name": "Toggl",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Integrate data from Toggl time tracker into Fibery",
   "authentication": [
     {
@@ -31,10 +31,25 @@
   },
   "actions": [
     {
-      "action": "test-action-from-toggl",
-      "name": "Test Action from Toggl",
+      "action": "start-toggle-timer",
+      "name": "Start Toggl Timer",
       "description": "Test action from toggl integration",
-      "args": []
+      "args": [
+        {
+          "id": "workspaceId",
+          "name": "Workspace Id",
+          "description": "Workspace Id",
+          "type": "text",
+          "textTemplateSupported": true
+        },
+        {
+          "id": "description",
+          "name": "Description",
+          "description": "Description",
+          "type": "text",
+          "textTemplateSupported": true
+        }
+      ]
     }
   ],
   "sources": []
