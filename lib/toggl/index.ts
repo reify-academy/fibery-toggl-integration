@@ -80,7 +80,7 @@ function handleResponse(response: Promise<Response>) {
       if ([200, 201, 204].includes(resp.status)) {
         return resp;
       } else {
-        throw new Error("Error in fetching time entries");
+        throw new Error("Error in fetching. Responded with:" + resp.status);
       }
     })
     .then((resp) => resp.json())
