@@ -173,13 +173,11 @@ const timeEntrySchema = {
     type: "text",
     name: "Name",
   },
-  // project_id: {
-  //   description:
-  //     "Project ID. Can be null if project was not provided or project was later deleted",
-  //   type: "integer",
-  //   nullable: true,
-  //   name: "Project ID",
-  // },
+  project_id: {
+    description: "Project ID",
+    type: "text",
+    name: "Project ID",
+  },
   server_deleted_at: {
     description: "When was deleted, null if not deleted",
     type: "date",
@@ -331,6 +329,11 @@ export const projectEntrySchema = {
     description: "Project ID",
     type: "ID",
     name: "Id",
+  },
+  project_id: {
+    description: "Project ID",
+    type: "text",
+    name: "Project Id",
   },
   name: {
     description: "Project name",
