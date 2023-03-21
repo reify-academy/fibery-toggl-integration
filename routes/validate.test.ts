@@ -9,7 +9,9 @@ Deno.test("can validate /validate route", async () => {
     routes,
     "/validate",
     JSON.stringify({
-      account: {
+      id: "key",
+      fields: {
+        auth: "key",
         key: config.TOGGL_API_TOKEN,
       },
     })

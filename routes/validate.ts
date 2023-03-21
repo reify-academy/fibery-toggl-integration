@@ -11,7 +11,7 @@ export const schema = {
 
 export default async function request(req: Request) {
   const incomingData = await req.json();
-  const { key } = incomingData.account;
+  const { key } = incomingData.fields;
   const user = await userDetails(key);
 
   return new Response(JSON.stringify({ name: user.fullname || user.email }), {
