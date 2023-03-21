@@ -19,6 +19,18 @@ export type TogglTimeEntry = {
   wid: number;
 };
 
+export function userDetails(key: string) {
+  const token = createAuthToken(key);
+  const res = fetch("https://api.track.toggl.com/api/v9/me", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Basic ${token}`,
+    },
+  });
+  return handleResponse(res);
+}
+
 export function fetchTimeEnties(
   key: string,
   start_date: string,

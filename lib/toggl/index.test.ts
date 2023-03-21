@@ -3,6 +3,7 @@ import {
   startTimer,
   getCurrentTimer,
   stopCurrentTimer,
+  userDetails,
 } from "/lib/toggl/index.ts";
 import { assert, assertEquals, load } from "/dev_deps.ts";
 import { addDays } from "npm:date-fns";
@@ -85,4 +86,10 @@ Deno.test("getCurrentTimer", async () => {
   await stopCurrentTimer(config.TOGGL_API_TOKEN, {
     workspaceId: config.TOGGL_WORKSPACE_ID,
   });
+});
+
+Deno.test("userDetails", async () => {
+  const config = await load();
+  const result = await userDetails(config.TOGGL_API_TOKEN);
+  assert(result.id > 0);
 });
