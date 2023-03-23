@@ -135,7 +135,10 @@ async function getTimeEntries(
 async function getProjects(key: string) {
   const projects = await fetchProjects(key);
   const finalRes = JSON.stringify({
-    items: projects,
+    items: projects.map((project: { id: { toString: () => string } }) => ({
+      ...project,
+      project_id: project.id.toString(),
+    })),
   });
   return new Response(finalRes, {
     headers: {

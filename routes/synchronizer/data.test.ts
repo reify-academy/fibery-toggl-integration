@@ -1,7 +1,7 @@
 import { routes } from "/mod.ts";
 import { testRoute, validateSchema } from "../../test_helpers.ts";
 import { schema } from "/routes/synchronizer/data.ts";
-import { load } from "/dev_deps.ts";
+import { assertExists, load } from "/dev_deps.ts";
 
 Deno.test("can validate /api/v1/synchronizer/data route", async () => {
   const config = await load();
@@ -39,7 +39,7 @@ Deno.test("can validate /api/v1/synchronizer/data route", async () => {
     })
   );
 
-  await testRoute(
+  const projectRes = await testRoute(
     routes,
     "/api/v1/synchronizer/data",
     JSON.stringify({
@@ -48,5 +48,10 @@ Deno.test("can validate /api/v1/synchronizer/data route", async () => {
       },
       requestedType: "project",
     })
+  ).then((res) => res.json());
+
+  assertExists(
+    projectRes.items[0].project_id,
+    "Project id should be specified"
   );
 });
