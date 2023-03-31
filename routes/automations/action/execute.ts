@@ -47,7 +47,13 @@ export default async function request(req: Request) {
   try {
     switch (actionName) {
       case "start-toggl-timer": {
-        await _internals.startTimer(key, args);
+        // tags is a string with comma separated values
+        const startTimerArgs = { ...args };
+        if (args.tags) {
+          const tags = args.tags.split(",");
+          startTimerArgs.tags = tags;
+        }
+        await _internals.startTimer(key, startTimerArgs);
         return new Response(JSON.stringify({}), {
           status: 200,
         });

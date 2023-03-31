@@ -122,6 +122,7 @@ type StartTimerArgs = {
   workspaceId: string;
   description: string;
   projectId?: string;
+  tags?: string[];
 };
 export function startTimer(
   key: string,
@@ -146,6 +147,7 @@ export function startTimer(
         created_with: "fibery_integration",
         workspace_id: parseInt(workspaceId as string),
         project_id: args.projectId ? parseInt(args.projectId) : null,
+        tags: args.tags,
         description: description,
       }),
     }

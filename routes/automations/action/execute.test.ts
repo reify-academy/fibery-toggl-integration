@@ -1,13 +1,18 @@
 import { routes } from "/mod.ts";
 import { testRoute, validateSchema } from "/test_helpers.ts";
 import { schema, _internals } from "/routes/automations/action/execute.ts";
-import { assert, load } from "/dev_deps.ts";
+import { assert, assertEquals, load } from "/dev_deps.ts";
 import { TogglTimeEntry } from "/lib/toggl/index.ts";
 
 Deno.test("can start timer", async () => {
   const config = await load();
 
-  _internals.startTimer = () => Promise.resolve({} as TogglTimeEntry);
+  let timerKey, timerArgs;
+  _internals.startTimer = (key, args) => {
+    timerKey = key;
+    timerArgs = args;
+    return Promise.resolve({} as TogglTimeEntry);
+  };
 
   await testRoute(
     routes,
@@ -22,10 +27,19 @@ Deno.test("can start timer", async () => {
           workspaceId: "123",
           description: "test description",
           projectId: "123",
+          tags: "test,tag",
         },
       },
     })
   ).then((res) => validateSchema(res, schema));
+
+  assertEquals(timerKey, config.TOGGL_API_TOKEN);
+  assertEquals(timerArgs, {
+    workspaceId: "123",
+    description: "test description",
+    projectId: "123",
+    tags: ["test", "tag"],
+  });
 });
 Deno.test(
   "can validate /api/v1/automations/action/execute route for stop-toggl-timer action",

@@ -56,6 +56,12 @@
           "type": "text",
           "textTemplateSupported": true
         },
+        {
+          "id": "tags",
+          "name": "Tags",
+          "description": "Comma separated list of tags",
+          "type": "text",
+          "textTemplateSupported": true
         }
       ]
     },
