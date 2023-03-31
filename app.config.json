@@ -26,7 +26,6 @@
     }
   ],
   "responsibleFor": {
-    "dataSynchronization": true,
     "automations": true
   },
   "actions": [
