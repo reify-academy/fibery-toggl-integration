@@ -1,7 +1,7 @@
 {
   "id": "toggl-app",
   "name": "Toggl",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Integrate data from Toggl time tracker into Fibery",
   "authentication": [
     {
@@ -21,7 +21,14 @@
           "description": "We need to have your toggl Integration Token to synchronize the data.",
           "id": "key-link",
           "name": "Read how to create integration, grant access and create token here..."
-        },
+        }
+      ]
+    },
+    {
+      "description": "Setup",
+      "name": "config",
+      "id": "config",
+      "fields": [
         {
           "type": "bool",
           "description": "Use this account for data synchronization",
