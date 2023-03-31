@@ -21,13 +21,6 @@
           "description": "We need to have your toggl Integration Token to synchronize the data.",
           "id": "key-link",
           "name": "Read how to create integration, grant access and create token here..."
-        },
-        {
-          "type": "bool",
-          "description": "Use this account for data synchronization",
-          "name": "Use for data sync",
-          "id": "dataSync",
-          "value": false
         }
       ]
     }
