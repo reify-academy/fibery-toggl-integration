@@ -4,7 +4,7 @@ import { schema, _internals } from "/routes/automations/action/execute.ts";
 import { assert, load } from "/dev_deps.ts";
 import { TogglTimeEntry } from "/lib/toggl/index.ts";
 
-Deno.test("can validate /api/v1/automations/action/execute route", async () => {
+Deno.test("can start timer", async () => {
   const config = await load();
 
   _internals.startTimer = () => Promise.resolve({} as TogglTimeEntry);
@@ -21,6 +21,7 @@ Deno.test("can validate /api/v1/automations/action/execute route", async () => {
         args: {
           workspaceId: "123",
           description: "test description",
+          projectId: "123",
         },
       },
     })

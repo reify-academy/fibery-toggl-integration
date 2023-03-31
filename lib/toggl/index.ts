@@ -118,9 +118,14 @@ function createAuthToken(username: string) {
   return token;
 }
 
+type StartTimerArgs = {
+  workspaceId: string;
+  description: string;
+  projectId?: string;
+};
 export function startTimer(
   key: string,
-  args: Record<string, unknown>
+  args: StartTimerArgs
 ): Promise<TogglTimeEntry> {
   const { workspaceId, description } = args;
   const token = createAuthToken(key);
@@ -140,6 +145,7 @@ export function startTimer(
         start: now.toISOString(),
         created_with: "fibery_integration",
         workspace_id: parseInt(workspaceId as string),
+        project_id: args.projectId ? parseInt(args.projectId) : null,
         description: description,
       }),
     }

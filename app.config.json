@@ -48,6 +48,14 @@
           "description": "Description",
           "type": "text",
           "textTemplateSupported": true
+        },
+        {
+          "id": "projectId",
+          "name": "Project Id",
+          "description": "Project Id",
+          "type": "text",
+          "textTemplateSupported": true
+        },
         }
       ]
     },

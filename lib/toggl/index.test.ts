@@ -36,6 +36,23 @@ Deno.test("startTimer", async () => {
   });
 });
 
+Deno.test("start timer with project_id", async () => {
+  const config = await load();
+  const result = await startTimer(config.TOGGL_API_TOKEN, {
+    workspaceId: config.TOGGL_WORKSPACE_ID,
+    description: "test description",
+    projectId: config.TOGGL_PROJECT_ID,
+  });
+
+  assert(result.id > 0);
+  assertEquals(result.project_id?.toString(), config.TOGGL_PROJECT_ID);
+
+  // Finally, stop the timer
+  await stopCurrentTimer(config.TOGGL_API_TOKEN, {
+    workspaceId: config.TOGGL_WORKSPACE_ID,
+  });
+});
+
 Deno.test("stopCurrentTimer", async () => {
   const config = await load();
 
