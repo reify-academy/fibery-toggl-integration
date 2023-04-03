@@ -69,6 +69,22 @@ Deno.test("start timer with tags", async () => {
   });
 });
 
+Deno.test("start timer with incorrect tags(empty string)", async () => {
+  const config = await load();
+  const result = await startTimer(config.TOGGL_API_TOKEN, {
+    workspaceId: config.TOGGL_WORKSPACE_ID,
+    description: "test description",
+    tags: "" as unknown as string[],
+  });
+  assert(result.id > 0);
+  assertEquals(result.tags, null);
+
+  // Finally, stop the timer
+  await stopCurrentTimer(config.TOGGL_API_TOKEN, {
+    workspaceId: config.TOGGL_WORKSPACE_ID,
+  });
+});
+
 Deno.test("stopCurrentTimer", async () => {
   const config = await load();
 

@@ -92,6 +92,7 @@ function handleResponse(response: Promise<Response>) {
       if ([200, 201, 204].includes(resp.status)) {
         return resp;
       } else {
+        console.error("http request error:", resp.status, resp.statusText);
         throw new Error("Error in request. Responded with:" + resp.status);
       }
     })
@@ -133,6 +134,10 @@ export function startTimer(
   const now = new Date();
   const now_in_epoch = Math.floor(now.getTime() / 1000);
   const duration = -1 * now_in_epoch;
+  // protect from tags being empty or empty array - do not need to send it to toggl as it errors out
+  if (args.tags?.length == 0) {
+    delete args.tags;
+  }
   const res = fetch(
     `https://api.track.toggl.com/api/v9/workspaces/${workspaceId}/time_entries`,
     {
