@@ -1,4 +1,4 @@
-import { addMonths } from "npm:date-fns";
+import { addMonths } from "/deps.ts";
 
 /* example - {"id":2841748647,"workspace_id":7066623,"project_id":null,"task_id":null,"billable":false,"start":"2023-02-12T07:00:00+00:00","stop":"2023-02-12T07:15:00Z","duration":900,"description":"213123312","tags":[],"tag_ids":[],"duronly":true,"at":"2023-02-12T07:00:48+00:00","server_deleted_at":null,"user_id":9174857,"uid":9174857,"wid":7066623}*/
 export type TogglTimeEntry = {

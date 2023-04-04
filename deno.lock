@@ -29,7 +29,10 @@
     "https://deno.land/std@0.177.0/testing/_diff.ts": "1a3c044aedf77647d6cac86b798c6417603361b66b54c53331b312caeb447aea",
     "https://deno.land/std@0.177.0/testing/_format.ts": "a69126e8a469009adf4cf2a50af889aca364c349797e63174884a52ff75cf4c7",
     "https://deno.land/std@0.177.0/testing/asserts.ts": "984ab0bfb3faeed92ffaa3a6b06536c66811185328c5dd146257c702c41b01ab",
-    "https://deno.land/x/rutt@0.0.14/mod.ts": "5027b8e8b12acca48b396a25aee74ad7ee94a25c24cda75571d7839cbd41113c"
+    "https://deno.land/x/rutt@0.0.14/mod.ts": "5027b8e8b12acca48b396a25aee74ad7ee94a25c24cda75571d7839cbd41113c",
+    "https://esm.sh/date-fns@2.29.3": "970f9f3c93a20fddec93c15e581aeddbffad48540975f65fd79fbe3a005d8d50",
+    "https://esm.sh/v113/date-fns@2.29.3/deno/date-fns.mjs": "2f3f18e2042e44229d6496ed86ca40109361508b671d74111780252afbe85c9d",
+    "https://esm.sh/v113/date-fns@2.29.3/typings.d.ts": "00a2a0751ca2e2443834f51d43bd52b24c3ab27799a0d4456c1dc950c6cdfff3"
   },
   "npm": {
     "specifiers": {

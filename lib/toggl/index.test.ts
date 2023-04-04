@@ -6,7 +6,7 @@ import {
   userDetails,
 } from "/lib/toggl/index.ts";
 import { assert, assertEquals, load } from "/dev_deps.ts";
-import { addDays } from "npm:date-fns";
+import { addDays } from "/deps.ts";
 
 Deno.test("fetchTimeEnties", async () => {
   const config = await load();
