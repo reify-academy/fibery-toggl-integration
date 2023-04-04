@@ -4,6 +4,7 @@ import {
   fetchTimeEnties,
   fetchWorkspaces,
 } from "/lib/toggl/index.ts";
+
 /* Example
 {
     "items": [
@@ -56,10 +57,15 @@ export const internals = {
   fetchTimeEnties,
 };
 
+type DateFilters = {
+  start_date?: string;
+  end_date?: string;
+};
+
 export default async function request(req: Request) {
   const incomingData = await req.json();
   const { key } = incomingData.account;
-  const { filters } = incomingData;
+  const { filters }: { filters: DateFilters } = incomingData;
   const { start_date, end_date } = filters ?? {};
   switch (incomingData.requestedType) {
     case "time_entry":
@@ -112,8 +118,8 @@ async function getWorkspaces(key: string) {
 
 async function getTimeEntries(
   key: string,
-  start_date: string,
-  end_date: string
+  start_date?: string,
+  end_date?: string
 ) {
   const timeEntries = await fetchTimeEnties(key, start_date, end_date);
 

@@ -6,7 +6,7 @@ import {
   userDetails,
 } from "/lib/toggl/index.ts";
 import { assert, assertEquals, load } from "/dev_deps.ts";
-import { addDays } from "npm:date-fns";
+import { addDays } from "/deps.ts";
 
 Deno.test("fetchTimeEnties", async () => {
   const config = await load();
@@ -16,6 +16,14 @@ Deno.test("fetchTimeEnties", async () => {
     addDays(new Date(), -14).toISOString(),
     new Date().toISOString()
   );
+
+  assert(result.length > 0);
+});
+
+Deno.test("fetchTimeEnties without dates", async () => {
+  const config = await load();
+
+  const result = await fetchTimeEnties(config.TOGGL_API_TOKEN);
 
   assert(result.length > 0);
 });
