@@ -1,4 +1,0 @@
-{
-  "deno.enable": true,
-  "window.title": "${activeEditorShort}${separator}${rootName}${separator}${profileName} ${separator} [Branch: fix_start_date_harcoded]"
-}
