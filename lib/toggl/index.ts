@@ -1,3 +1,5 @@
+import { addMonths } from "npm:date-fns";
+
 /* example - {"id":2841748647,"workspace_id":7066623,"project_id":null,"task_id":null,"billable":false,"start":"2023-02-12T07:00:00+00:00","stop":"2023-02-12T07:15:00Z","duration":900,"description":"213123312","tags":[],"tag_ids":[],"duronly":true,"at":"2023-02-12T07:00:48+00:00","server_deleted_at":null,"user_id":9174857,"uid":9174857,"wid":7066623}*/
 export type TogglTimeEntry = {
   id: number;
@@ -33,13 +35,13 @@ export function userDetails(key: string) {
 
 export function fetchTimeEnties(
   key: string,
-  start_date: string,
-  end_date: string
+  start_date?: string,
+  end_date?: string
 ): Promise<TogglTimeEntry[]> {
   const token = createAuthToken(key);
-  const url = `https://api.track.toggl.com/api/v9/me/time_entries?start_date=${
-    start_date ?? "2023-01-01"
-  }&end_date=${end_date ?? "2023-12-12"}`;
+  const safeStartDate = start_date ?? addMonths(new Date(), -3).toISOString();
+  const safeEndDate = end_date ?? new Date().toISOString();
+  const url = `https://api.track.toggl.com/api/v9/me/time_entries?start_date=${safeStartDate}&end_date=${safeEndDate}`;
   const response = fetch(url, {
     method: "GET",
     headers: {

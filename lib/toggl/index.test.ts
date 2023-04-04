@@ -20,6 +20,14 @@ Deno.test("fetchTimeEnties", async () => {
   assert(result.length > 0);
 });
 
+Deno.test("fetchTimeEnties without dates", async () => {
+  const config = await load();
+
+  const result = await fetchTimeEnties(config.TOGGL_API_TOKEN);
+
+  assert(result.length > 0);
+});
+
 Deno.test("startTimer", async () => {
   const config = await load();
 
