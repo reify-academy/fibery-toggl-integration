@@ -39,9 +39,10 @@ export function fetchTimeEnties(
   end_date?: string
 ): Promise<TogglTimeEntry[]> {
   const token = createAuthToken(key);
-  const safeStartDate = start_date ?? addMonths(new Date(), -3).toISOString();
+  const safeStartDate = start_date ?? addMonths(new Date(), -2).toISOString();
   const safeEndDate = end_date ?? new Date().toISOString();
   const url = `https://api.track.toggl.com/api/v9/me/time_entries?start_date=${safeStartDate}&end_date=${safeEndDate}`;
+  console.debug("fetching time entries", url);
   const response = fetch(url, {
     method: "GET",
     headers: {

@@ -31,8 +31,19 @@
     "https://deno.land/std@0.177.0/testing/asserts.ts": "984ab0bfb3faeed92ffaa3a6b06536c66811185328c5dd146257c702c41b01ab",
     "https://deno.land/x/rutt@0.0.14/mod.ts": "5027b8e8b12acca48b396a25aee74ad7ee94a25c24cda75571d7839cbd41113c",
     "https://esm.sh/date-fns@2.29.3": "970f9f3c93a20fddec93c15e581aeddbffad48540975f65fd79fbe3a005d8d50",
+    "https://esm.sh/date-fns@2.30.0": "55e2727fc53b94e7ff91c80b0c1288bded2f9ff1cafa3badfd2bebe5c7f815c1",
     "https://esm.sh/v113/date-fns@2.29.3/deno/date-fns.mjs": "2f3f18e2042e44229d6496ed86ca40109361508b671d74111780252afbe85c9d",
-    "https://esm.sh/v113/date-fns@2.29.3/typings.d.ts": "00a2a0751ca2e2443834f51d43bd52b24c3ab27799a0d4456c1dc950c6cdfff3"
+    "https://esm.sh/v113/date-fns@2.29.3/typings.d.ts": "00a2a0751ca2e2443834f51d43bd52b24c3ab27799a0d4456c1dc950c6cdfff3",
+    "https://esm.sh/v124/@babel/runtime@7.21.5/deno/helpers/esm/assertThisInitialized.js": "4a186a7175d52a9a0305d89750cea79738204a1d1dcd14a52d817fa3bfb20508",
+    "https://esm.sh/v124/@babel/runtime@7.21.5/deno/helpers/esm/classCallCheck.js": "f124be67125643c9a03b9f317a977801c939ba30fc969d4051935c35425cb18a",
+    "https://esm.sh/v124/@babel/runtime@7.21.5/deno/helpers/esm/createClass.js": "8d9f0c5ceb96323a3c0f7516dd1d86f4844eb38bbe13f8de5616f9f27b3449b6",
+    "https://esm.sh/v124/@babel/runtime@7.21.5/deno/helpers/esm/createForOfIteratorHelper.js": "30fd7ff92d5f2f35ee362df37b22c2071bae1b4b036a821bc92120eaf9153daa",
+    "https://esm.sh/v124/@babel/runtime@7.21.5/deno/helpers/esm/createSuper.js": "5af18d0c842a2f5e60e19aa74cb91eacbb3583b38d597ffa73fb32f225061279",
+    "https://esm.sh/v124/@babel/runtime@7.21.5/deno/helpers/esm/defineProperty.js": "87b3e369444b0be1d48ae1fac9312a8884c86251abdbdb830004b2ca541a9a4c",
+    "https://esm.sh/v124/@babel/runtime@7.21.5/deno/helpers/esm/inherits.js": "69654f8b247739e9805e440dbe21e71408f75222108c561824441981779d52ba",
+    "https://esm.sh/v124/@babel/runtime@7.21.5/deno/helpers/esm/typeof.js": "62e4d9c3fab09dca42d7ebf0008311d34c36a0fc84478afd0e467534bb2e49e6",
+    "https://esm.sh/v124/date-fns@2.30.0/deno/date-fns.mjs": "7d3aee57a2332dcf9bd38d60dcadeb07f77eeca4f0cba225a33adfed36b7eff0",
+    "https://esm.sh/v124/date-fns@2.30.0/typings.d.ts": "7773044cb200b98d055b68f569569d9b56f95bceb46dafe21777559254ee053a"
   },
   "npm": {
     "specifiers": {
